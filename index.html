@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zeroX | Cybersecurity Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <style>
+        /* ===== Professional Cybersecurity Theme ===== */
+        :root {
+            --primary: #2563eb;  /* Professional blue */
+            --secondary: #059669; /* Security green */
+            --dark: #111827;     /* Dark background */
+            --darker: #0a0a23;   /* Darker elements */
+            --light: #f3f4f6;    /* Light text */
+            --border: #374151;   /* Border color */
+        }
+
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* ===== Header & Navigation ===== */
+        header {
+            background-color: var(--darker);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-solid {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-solid:hover {
+            background: #1d4ed8;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('images/cyber-bg.jpg') no-repeat center/cover;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #d1d5db;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* ===== Mission Section ===== */
+        .mission-section {
+            background-color: var(--darker);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #1f2937;
+            border-radius: 8px;
+            padding: 30px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        /* ===== Services Section ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #1f2937;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .service-content p {
+            margin-bottom: 20px;
+            color: #d1d5db;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .btn-small:hover {
+            background: #047857;
+        }
+
+        /* ===== News Section ===== */
+        .news-section {
+            background-color: var(--darker);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: #1f2937;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .news-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-content h3 {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .news-content p {
+            margin-bottom: 15px;
+            color: #d1d5db;
+        }
+
+        .news-date {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* ===== Tutorials Section ===== */
+        .tutorials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #0a0a23;
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-about p {
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: #9ca3af;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: #9ca3af;
+        }
+
+        .legal-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== Verification Modal ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1f2937;
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            border-top: 4px solid var(--primary);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .modal-header p {
+            color: #9ca3af;
+        }
+
+        .verification-box {
+            background: #111827;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            color: var(--secondary);
+        }
+
+        .verification-input {
+            width: 100%;
+            padding: 12px;
+            background: #111827;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: white;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .legal-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="zeroX Logo">
+                    <span class="logo-text">zeroX</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="team.html">Team</a>
+                    <a href="tutorials.html">Tutorials</a>
+                    <a href="news.html">News</a>
+                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-solid">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Advanced Cybersecurity Solutions</h1>
+                <p class="hero-subtitle">Protecting your digital assets with cutting-edge security services and ethical hacking expertise</p>
+                <div class="hero-buttons">
+                    <a href="services.html" class="btn btn-solid">Our Services</a>
+                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="section-title">Our <span>Mission</span></h2>
+            <div class="mission-cards">
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Identify Vulnerabilities</h3>
+                    <p>We proactively discover and responsibly disclose security flaws to help organizations strengthen their defenses against cyber threats.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Security Education</h3>
+                    <p>Training the next generation of cybersecurity professionals through comprehensive courses and hands-on workshops.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-code"></i>
+                    <h3>Open Source Tools</h3>
+                    <p>Developing and maintaining security tools that benefit the entire cybersecurity community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Our <span>Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('images/services/bug-bounty.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Bug Bounty Programs</h3>
+                        <p>Our team of ethical hackers identifies and reports vulnerabilities in your systems before malicious actors can exploit them.</p>
+                        <a href="#" class="btn-small">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('images/services/pentesting.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Penetration Testing</h3>
+                        <p>Comprehensive security assessments that simulate real-world attacks to identify weaknesses in your infrastructure.</p>
+                        <a href="#" class="btn-small">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('images/services/security-consulting.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Security Consulting</h3>
+                        <p>Tailored security solutions designed to protect your organization's unique digital assets and infrastructure.</p>
+                        <a href="#" class="btn-small">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Latest <span>Security News</span></h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('images/news/ransomware.jpg');"></div>
+                    <div class="news-content">
+                        <span class="news-date">June 10, 2025</span>
+                        <h3>Global Ransomware Attack</h3>
+                        <p>New strain targets healthcare systems worldwide with sophisticated encryption methods.</p>
+                        <a href="#" class="btn-small">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('images/news/zero-day.jpg');"></div>
+                    <div class="news-content">
+                        <span class="news-date">June 5, 2025</span>
+                        <h3>Chrome Zero-Day Exploit</h3>
+                        <p>Critical vulnerability in Chrome browser allows remote code execution on affected systems.</p>
+                        <a href="#" class="btn-small">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('images/news/ai-security.jpg');"></div>
+                    <div class="news-content">
+                        <span class="news-date">May 28, 2025</span>
+                        <h3>AI in Cybersecurity</h3>
+                        <p>How machine learning is revolutionizing threat detection and automated response systems.</p>
+                        <a href="#" class="btn-small">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Featured <span>Tutorials</span></h2>
+            <div class="tutorials-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('images/tutorials/sqli.jpg');"></div>
+                    <div class="service-content">
+                        <h3>SQL Injection</h3>
+                        <p>Learn how SQL injection attacks work and how to prevent them in your applications.</p>
+                        <a href="#" class="btn-small">View Tutorial</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('images/tutorials/xss.jpg');"></div>
+                    <div class="service-content">
+                        <h3>XSS Attacks</h3>
+                        <p>Understand Cross-Site Scripting vulnerabilities and how to secure your web applications.</p>
+                        <a href="#" class="btn-small">View Tutorial</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('images/tutorials/metasploit.jpg');"></div>
+                    <div class="service-content">
+                        <h3>Metasploit Framework</h3>
+                        <p>Get started with the most popular penetration testing tool in the cybersecurity industry.</p>
+                        <a href="#" class="btn-small">View Tutorial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="images/logo-white.png" alt="zeroX Logo">
+                        <span class="logo-text">zeroX</span>
+                    </div>
+                    <p>zeroX is a leading cybersecurity firm providing cutting-edge security solutions, ethical hacking services, and security training.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="team.html">Meet the Team</a></li>
+                        <li><a href="tutorials.html">Security Tutorials</a></li>
+                        <li><a href="news.html">Security News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> security@zerox.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Security Ave, Cyber City</p>
+                    <p><i class="fas fa-lock"></i> PGP Key: 0x1A2B3C4D5E6F7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 zeroX Security. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Ethical Guidelines</a>
+                    <a href="#">Responsible Disclosure</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Verification Modal -->
+    <div class="modal" id="verification-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Security Verification</h2>
+                <p>Please complete this security check to continue</p>
+            </div>
+            <div class="verification-box">
+                > Security verification required<br>
+                > Please enter the code below:<br><br>
+                VERIFICATION CODE: <strong>X9K4L2</strong>
+            </div>
+            <input type="text" class="verification-input" placeholder="Enter verification code...">
+            <div class="modal-buttons">
+                <button class="btn btn-solid" id="verify-btn">Verify</button>
+                <button class="btn btn-outline" id="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show verification modal after delay
+        setTimeout(() => {
+            document.getElementById('verification-modal').style.display = 'flex';
+        }, 15000);
+
+        // Close modal when clicking cancel
+        document.getElementById('cancel-btn').addEventListener('click', () => {
+            document.getElementById('verification-modal').style.display = 'none';
+        });
+
+        // Verify button functionality
+        document.getElementById('verify-btn').addEventListener('click', () => {
+            // In a real implementation, validate the code here
+            document.getElementById('verification-modal').style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('verification-modal')) {
+                document.getElementById('verification-modal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

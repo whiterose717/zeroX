@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zeroX | Cybersecurity Resources</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <style>
+        /* ==== Professional Cybersecurity Theme ==== */
+        :root {
+            --cyber-blue: #2563eb;
+            --cyber-green: #059669;
+            --dark-bg: #111827;
+            --darker-bg: #0a0a23;
+            --light-text: #f3f4f6;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==== Header & Navigation ==== */
+        header {
+            background-color: var(--darker-bg);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cyber-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--light-text);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyber-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyber-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ==== Hero Section ==== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('images/cyber-bg.jpg') no-repeat center/cover;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #d1d5db;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==== Main Content Sections ==== */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--cyber-green);
+        }
+
+        /* ==== Resources Grid ==== */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-card {
+            background: #1f2937;
+            border-radius: 8px;
+            padding: 30px;
+            border-left: 4px solid var(--cyber-green);
+            transition: transform 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .resource-card h3 {
+            color: var(--cyber-blue);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resource-card h3 i {
+            color: var(--cyber-green);
+        }
+
+        .resource-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .resource-card li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .resource-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--cyber-green);
+        }
+
+        .resource-card a {
+            color: var(--light-text);
+            transition: color 0.3s;
+        }
+
+        .resource-card a:hover {
+            color: var(--cyber-blue);
+            text-decoration: underline;
+        }
+
+        /* ==== Q&A Section ==== */
+        .qa-section {
+            background-color: var(--darker-bg);
+        }
+
+        .qa-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .qa-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .qa-question {
+            padding: 15px 20px;
+            background: #1f2937;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .qa-question:hover {
+            background: #1a202c;
+        }
+
+        .qa-answer {
+            padding: 20px;
+            background: #1a202c;
+            display: none;
+        }
+
+        .qa-answer.show {
+            display: block;
+        }
+
+        /* ==== Footer ==== */
+        footer {
+            background: var(--darker-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about p {
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--cyber-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyber-blue);
+        }
+
+        .footer-contact p {
+            color: #9ca3af;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--cyber-blue);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* ==== Responsive Design ==== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="zeroX Logo">
+                    <span class="logo-text">zeroX</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="team.html">Team</a>
+                    <a href="tutorials.html">Tutorials</a>
+                    <a href="news.html">News</a>
+                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Cybersecurity Resources</h1>
+            <p class="hero-subtitle">Curated collection of the best learning materials, news sources, and community Q&A for cybersecurity professionals</p>
+        </div>
+    </section>
+
+    <!-- Learning Resources Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
+            <div class="resources-grid">
+                <!-- News Sources -->
+                <div class="resource-card">
+                    <h3><i class="fas fa-newspaper"></i> Cybersecurity News</h3>
+                    <p>Stay updated with the latest security threats and vulnerabilities:</p>
+                    <ul>
+                        <li><a href="https://krebsonsecurity.com" target="_blank">Krebs on Security</a> - In-depth reports on breaches and cybercrime</li>
+                        <li><a href="https://thehackernews.com" target="_blank">The Hacker News</a> - Daily updates on threats and vulnerabilities</li>
+                        <li><a href="https://www.bleepingcomputer.com" target="_blank">Bleeping Computer</a> - Malware outbreaks and data breaches</li>
+                        <li><a href="https://www.darkreading.com" target="_blank">Dark Reading</a> - Enterprise security insights</li>
+                        <li><a href="https://www.cisa.gov/news-events" target="_blank">CISA</a> - US government security alerts</li>
+                        <li><a href="https://threatpost.com" target="_blank">Threatpost</a> - Critical vulnerabilities and APTs</li>
+                        <li><a href="https://www.securityweek.com" target="_blank">SecurityWeek</a> - Corporate-focused security news</li>
+                        <li><a href="https://www.reddit.com/r/netsec/" target="_blank">r/netsec</a> - Community-curated security content</li>
+                        <li><a href="https://www.zerodayinitiative.com/blog" target="_blank">ZDI Blog</a> - Zero-day vulnerability research</li>
+                        <li><a href="https://isc.sans.edu" target="_blank">ISC SANS</a> - Technical threat analysis</li>
+                    </ul>
+                </div>
+
+                <!-- Tutorials & Practice -->
+                <div class="resource-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Tutorials & Practice</h3>
+                    <p>Hands-on learning platforms and educational resources:</p>
+                    <ul>
+                        <li><a href="https://portswigger.net/web-security" target="_blank">PortSwigger Web Security Academy</a> - Free online training</li>
+                        <li><a href="https://tryhackme.com" target="_blank">TryHackMe</a> - Beginner-friendly security rooms</li>
+                        <li><a href="https://www.hackthebox.com" target="_blank">Hack The Box</a> - Challenging security labs</li>
+                        <li><a href="https://overthewire.org/wargames/" target="_blank">OverTheWire</a> - War games for Linux security</li>
+                        <li><a href="https://www.vulnhub.com" target="_blank">VulnHub</a> - Vulnerable VMs for practice</li>
+                        <li><a href="https://www.cybrary.it" target="_blank">Cybrary</a> - Free security courses</li>
+                        <li><a href="https://www.sans.org/cyber-security-courses/" target="_blank">SANS Courses</a> - Premium security training</li>
+                        <li><a href="https://www.elearnsecurity.com" target="_blank">eLearnSecurity</a> - Practical security certifications</li>
+                        <li><a href="https://www.pentesterlab.com" target="_blank">PentesterLab</a> - Web exploitation exercises</li>
+                        <li><a href="https://www.mosse-institute.com" target="_blank">Mosse Security</a> - Free security training</li>
+                    </ul>
+                </div>
+
+                <!-- Tools & References -->
+                <div class="resource-card">
+                    <h3><i class="fas fa-tools"></i> Tools & References</h3>
+                    <p>Essential cybersecurity tools and reference materials:</p>
+                    <ul>
+                        <li><a href="https://www.kali.org" target="_blank">Kali Linux</a> - Penetration testing distribution</li>
+                        <li><a href="https://www.metasploit.com" target="_blank">Metasploit</a> - Exploitation framework</li>
+                        <li><a href="https://www.wireshark.org" target="_blank">Wireshark</a> - Network protocol analyzer</li>
+                        <li><a href="https://www.nmap.org" target="_blank">Nmap</a> - Network scanning tool</li>
+                        <li><a href="https://www.burpsuite.com" target="_blank">Burp Suite</a> - Web application testing</li>
+                        <li><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10</a> - Web app security risks</li>
+                        <li><a href="https://cve.mitre.org" target="_blank">CVE Database</a> - Common Vulnerabilities and Exposures</li>
+                        <li><a href="https://www.exploit-db.com" target="_blank">Exploit Database</a> - Archive of exploits</li>
+                        <li><a href="https://www.shodan.io" target="_blank">Shodan</a> - Search engine for devices</li>
+                        <li><a href="https://github.com/topics/cybersecurity" target="_blank">GitHub Security</a> - Open-source security tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section class="qa-section">
+        <div class="container">
+            <h2 class="section-title">Community Q&A</h2>
+            <div class="qa-accordion">
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span>What's the best way to start learning ethical hacking?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <p>Begin with understanding networking fundamentals (TCP/IP, HTTP, DNS), then learn Linux basics. Start with TryHackMe's beginner paths, then move to Hack The Box. Focus on one area at a time (web security, network security, etc.) and practice regularly.</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span>Which programming languages are most important for cybersecurity?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <p>Python is essential for scripting and automation. JavaScript is crucial for web security. For low-level work, learn C/C++. Bash scripting is important for Linux environments. SQL knowledge helps with database security.</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span>What certifications should I get for a career in cybersecurity?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <p>Start with CompTIA Security+, then consider:<br>
+                        - Offensive Security: OSCP for penetration testing<br>
+                        - (ISC)²: CISSP for security management<br>
+                        - SANS/GIAC: GSEC for general security<br>
+                        - EC-Council: CEH for ethical hacking basics<br>
+                        Choose based on your desired career path (red team, blue team, compliance, etc.).</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span>How can I practice ethical hacking legally?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <p>Use platforms like Hack The Box, TryHackMe, and VulnHub that provide legal environments for practice. Participate in bug bounty programs (HackerOne, Bugcrowd). Never test systems without explicit permission.</p>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span>What's the difference between penetration testing and ethical hacking?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="qa-answer">
+                        <p>Ethical hacking is a broad term covering all authorized hacking activities. Penetration testing is a specific type of ethical hacking with defined scope and rules of engagement, typically following a formal methodology to test systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="logo">
+                        <img src="images/logo-white.png" alt="zeroX Logo">
+                        <span class="logo-text">zeroX</span>
+                    </div>
+                    <p>zeroX is a collective of ethical hackers and cybersecurity advocates committed to defending the digital frontier.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="tutorials.html">Tutorials</a></li>
+                        <li><a href="news.html">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> security@zerox.com</p>
+                    <p><i class="fab fa-telegram"></i> @phazto</p>
+                    <p><i class="fas fa-key"></i> PGP: 0x1A2B3C4D5E6F7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Secure Location</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 zeroX Security. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Ethical Guidelines</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Q&A Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.qa-question');
+            
+            questions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('i');
+                    
+                    // Toggle answer visibility
+                    answer.classList.toggle('show');
+                    
+                    // Rotate icon
+                    if (answer.classList.contains('show')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                    
+                    // Close other open answers
+                    questions.forEach(q => {
+                        if (q !== question) {
+                            q.nextElementSibling.classList.remove('show');
+                            q.querySelector('i').classList.remove('fa-chevron-up');
+                            q.querySelector('i').classList.add('fa-chevron-down');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

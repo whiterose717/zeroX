@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity News | zeroX</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <style>
+        .news-hero {
+            background: linear-gradient(135deg, #2a2a72 0%, #ffa400 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .news-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .news-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .news-category {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .news-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: var(--secondary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        .news-sources {
+            margin: 60px 0;
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .source-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .source-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .source-link {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 10px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn.active, .page-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="zeroX Logo" class="logo">
+            <span class="brand-name">zeroX</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="news-hero">
+        <h1>Cybersecurity News</h1>
+        <p>Stay updated with the latest threats, vulnerabilities, and security trends</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="news-container">
+        <div class="news-filters">
+            <button class="filter-btn active">All News</button>
+            <button class="filter-btn">Vulnerabilities</button>
+            <button class="filter-btn">Data Breaches</button>
+            <button class="filter-btn">Malware</button>
+            <button class="filter-btn">Zero-Days</button>
+            <button class="filter-btn">Regulations</button>
+        </div>
+
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('https://via.placeholder.com/600x400?text=Critical+Vulnerability')"></div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-category">Vulnerabilities</span>
+                        <span>June 10, 2025</span>
+                    </div>
+                    <h3 class="news-title">Critical Vulnerability Discovered in Popular Web Framework</h3>
+                    <p class="news-excerpt">A zero-day vulnerability affecting millions of websites has been discovered in a widely used web framework, allowing remote code execution.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('https://via.placeholder.com/600x400?text=Data+Breach')"></div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-category">Data Breaches</span>
+                        <span>June 8, 2025</span>
+                    </div>
+                    <h3 class="news-title">Major Social Media Platform Suffers Data Breach</h3>
+                    <p class="news-excerpt">Over 10 million user records exposed in a breach that included emails, hashed passwords, and personal information.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('https://via.placeholder.com/600x400?text=Ransomware')"></div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-category">Malware</span>
+                        <span>June 5, 2025</span>
+                    </div>
+                    <h3 class="news-title">New Ransomware Variant Targets Healthcare Sector</h3>
+                    <p class="news-excerpt">Hospitals across several countries report attacks from a sophisticated ransomware strain demanding cryptocurrency payments.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('https://via.placeholder.com/600x400?text=Regulation')"></div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-category">Regulations</span>
+                        <span>June 3, 2025</span>
+                    </div>
+                    <h3 class="news-title">New Cybersecurity Regulations Proposed for Financial Sector</h3>
+                    <p class="news-excerpt">Government announces stricter cybersecurity requirements for banks and financial institutions to combat rising threats.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('https://via.placeholder.com/600x400?text=Zero-Day')"></div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-category">Zero-Days</span>
+                        <span>May 30, 2025</span>
+                    </div>
+                    <h3 class="news-title">Zero-Day Exploit Found in Popular Productivity Software</h3>
+                    <p class="news-excerpt">Security researchers discover an actively exploited vulnerability that allows attackers to gain full system access.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-image" style="background-image: url('https://via.placeholder.com/600x400?text=Phishing')"></div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span class="news-category">Threats</span>
+                        <span>May 28, 2025</span>
+                    </div>
+                    <h3 class="news-title">Sophisticated Phishing Campaign Targets Corporate Executives</h3>
+                    <p class="news-excerpt">New business email compromise (BEC) campaign uses AI-generated voices to bypass security measures.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <section class="news-sources">
+            <h2 style="text-align: center; margin-bottom: 20px;">Our Trusted News Sources</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">We aggregate cybersecurity news from the most reputable sources in the industry to bring you accurate and timely information.</p>
+            
+            <div class="sources-grid">
+                <div class="source-card">
+                    <h3>Krebs on Security</h3>
+                    <p>In-depth reports on breaches, malware, and cybercrime by journalist Brian Krebs.</p>
+                    <a href="https://krebsonsecurity.com" class="source-link" target="_blank">Visit Site</a>
+                </div>
+                
+                <div class="source-card">
+                    <h3>The Hacker News</h3>
+                    <p>One of the most active cybersecurity blogs with daily updates on threats and vulnerabilities.</p>
+                    <a href="https://thehackernews.com" class="source-link" target="_blank">Visit Site</a>
+                </div>
+                
+                <div class="source-card">
+                    <h3>Bleeping Computer</h3>
+                    <p>Covers malware outbreaks, data breaches, new threats, and software updates.</p>
+                    <a href="https://www.bleepingcomputer.com" class="source-link" target="_blank">Visit Site</a>
+                </div>
+                
+                <div class="source-card">
+                    <h3>Dark Reading</h3>
+                    <p>Popular among professionals for security insights, trends, and enterprise solutions.</p>
+                    <a href="https://www.darkreading.com" class="source-link" target="_blank">Visit Site</a>
+                </div>
+                
+                <div class="source-card">
+                    <h3>CISA</h3>
+                    <p>Official U.S. government site for security alerts, patch notices, and infrastructure warnings.</p>
+                    <a href="https://www.cisa.gov/news-events" class="source-link" target="_blank">Visit Site</a>
+                </div>
+                
+                <div class="source-card">
+                    <h3>Threatpost</h3>
+                    <p>Focuses on critical vulnerabilities, APTs, exploits, and cyber espionage.</p>
+                    <a href="https://threatpost.com" class="source-link" target="_blank">Visit Site</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="images/logo.png" alt="zeroX Logo" class="footer-logo">
+                <p>zeroX is a collective of ethical hackers and cybersecurity advocates committed to defending the digital frontier.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> teat01@gmail.com</p>
+                <p><i class="fab fa-telegram"></i> @phazto</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 zeroX. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Ethical Guidelines</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

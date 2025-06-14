@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Certifications | zeroX</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <style>
+        .certs-hero {
+            background: linear-gradient(135deg, #4bb543 0%, #2a2a72 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .certs-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .certs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .certs-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .cert-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        
+        .cert-tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #666;
+            position: relative;
+        }
+        
+        .cert-tab.active {
+            color: var(--primary-color);
+        }
+        
+        .cert-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .cert-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cert-image {
+            height: 200px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cert-content {
+            padding: 20px;
+        }
+        
+        .cert-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .cert-org {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .cert-desc {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .cert-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .cert-level {
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .cert-link {
+            color: var(--secondary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .cert-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cert-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .comparison-section {
+            margin: 60px 0;
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .check-mark {
+            color: #4bb543;
+            font-weight: bold;
+        }
+        
+        .resources-section {
+            margin: 60px 0;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .resource-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .resource-link {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="zeroX Logo" class="logo">
+            <span class="brand-name">zeroX</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="certs-hero">
+        <h1>Cybersecurity Certifications</h1>
+        <p>Advance your career with recognized cybersecurity credentials</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="certs-container">
+        <div class="certs-intro">
+            <p>Cybersecurity certifications validate your skills and knowledge in specific security domains. They can help you stand out in the job market, command higher salaries, and gain access to more advanced positions. Below are some of the most respected certifications in the industry.</p>
+        </div>
+
+        <div class="cert-tabs">
+            <button class="cert-tab active">All Certifications</button>
+            <button class="cert-tab">Beginner</button>
+            <button class="cert-tab">Intermediate</button>
+            <button class="cert-tab">Advanced</button>
+            <button class="cert-tab">Specialized</button>
+        </div>
+
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('https://via.placeholder.com/300x200?text=CEH')"></div>
+                <div class="cert-content">
+                    <h3 class="cert-title">Certified Ethical Hacker (CEH)</h3>
+                    <span class="cert-org">EC-Council</span>
+                    <p class="cert-desc">Validates skills in identifying vulnerabilities and weaknesses in target systems using the same knowledge and tools as malicious hackers.</p>
+                    <div class="cert-meta">
+                        <span class="cert-level">Intermediate</span>
+                        <span>Exam: 125 questions</span>
+                    </div>
+                    <a href="https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/" class="cert-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('https://via.placeholder.com/300x200?text=Security%2B')"></div>
+                <div class="cert-content">
+                    <h3 class="cert-title">CompTIA Security+</h3>
+                    <span class="cert-org">CompTIA</span>
+                    <p class="cert-desc">Foundational cybersecurity certification covering network security, compliance, threats and vulnerabilities.</p>
+                    <div class="cert-meta">
+                        <span class="cert-level">Beginner</span>
+                        <span>Exam: 90 questions</span>
+                    </div>
+                    <a href="https://www.comptia.org/certifications/security" class="cert-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('https://via.placeholder.com/300x200?text=CISSP')"></div>
+                <div class="cert-content">
+                    <h3 class="cert-title">CISSP</h3>
+                    <span class="cert-org">(ISC)²</span>
+                    <p class="cert-desc">Advanced certification demonstrating expertise in designing, implementing, and managing cybersecurity programs.</p>
+                    <div class="cert-meta">
+                        <span class="cert-level">Advanced</span>
+                        <span>Exam: 100-150 questions</span>
+                    </div>
+                    <a href="https://www.isc2.org/Certifications/CISSP" class="cert-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('https://via.placeholder.com/300x200?text=OSCP')"></div>
+                <div class="cert-content">
+                    <h3 class="cert-title">OSCP</h3>
+                    <span class="cert-org">Offensive Security</span>
+                    <p class="cert-desc">Hands-on penetration testing certification requiring candidates to successfully attack and penetrate various live machines.</p>
+                    <div class="cert-meta">
+                        <span class="cert-level">Advanced</span>
+                        <span>24-hour practical exam</span>
+                    </div>
+                    <a href="https://www.offensive-security.com/pwk-oscp/" class="cert-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('https://via.placeholder.com/300x200?text=CISM')"></div>
+                <div class="cert-content">
+                    <h3 class="cert-title">CISM</h3>
+                    <span class="cert-org">ISACA</span>
+                    <p class="cert-desc">Focuses on information security governance, risk management, and program development and management.</p>
+                    <div class="cert-meta">
+                        <span class="cert-level">Advanced</span>
+                        <span>Exam: 150 questions</span>
+                    </div>
+                    <a href="https://www.isaca.org/credentialing/cism" class="cert-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="cert-card">
+                <div class="cert-image" style="background-image: url('https://via.placeholder.com/300x200?text=GSEC')"></div>
+                <div class="cert-content">
+                    <h3 class="cert-title">GSEC</h3>
+                    <span class="cert-org">GIAC</span>
+                    <p class="cert-desc">Validates a practitioner's knowledge of information security beyond simple terminology and concepts.</p>
+                    <div class="cert-meta">
+                        <span class="cert-level">Intermediate</span>
+                        <span>Exam: 180 questions</span>
+                    </div>
+                    <a href="https://www.giac.org/certifications/security-essentials-gsec/" class="cert-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <section class="comparison-section">
+            <h2 style="text-align: center; margin-bottom: 20px;">Certification Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Certification</th>
+                        <th>Level</th>
+                        <th>Experience Required</th>
+                        <th>Exam Format</th>
+                        <th>Renewal</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CompTIA Security+</td>
+                        <td>Beginner</td>
+                        <td>None</td>
+                        <td>Multiple choice</td>
+                        <td>3 years</td>
+                        <td>Entry-level security roles</td>
+                    </tr>
+                    <tr>
+                        <td>CEH</td>
+                        <td>Intermediate</td>
+                        <td>2 years recommended</td>
+                        <td>Multiple choice</td>
+                        <td>3 years</td>
+                        <td>Ethical hackers</td>
+                    </tr>
+                    <tr>
+                        <td>CISSP</td>
+                        <td>Advanced</td>
+                        <td>5 years</td>
+                        <td>Adaptive</td>
+                        <td>3 years</td>
+                        <td>Security managers</td>
+                    </tr>
+                    <tr>
+                        <td>OSCP</td>
+                        <td>Advanced</td>
+                        <td>Hands-on experience</td>
+                        <td>Practical</td>
+                        <td>None</td>
+                        <td>Penetration testers</td>
+                    </tr>
+                    <tr>
+                        <td>CISM</td>
+                        <td>Advanced</td>
+                        <td>5 years</td>
+                        <td>Multiple choice</td>
+                        <td>3 years</td>
+                        <td>Security managers</td>
+                    </tr>
+                    <tr>
+                        <td>GSEC</td>
+                        <td>Intermediate</td>
+                        <td>None</td>
+                        <td>Multiple choice</td>
+                        <td>4 years</td>
+                        <td>Security practitioners</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="resources-section">
+            <h2 style="text-align: center; margin-bottom: 20px;">Certification Preparation Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Practice Exams</h3>
+                    <p>Test your knowledge with realistic practice questions and simulated exams for various certifications.</p>
+                    <a href="#" class="resource-link">Access Practice Exams</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Study Guides</h3>
+                    <p>Comprehensive guides covering all exam objectives for popular cybersecurity certifications.</p>
+                    <a href="#" class="resource-link">View Study Guides</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Training Courses</h3>
+                    <p>Online and in-person training courses to help you prepare for certification exams.</p>
+                    <a href="#" class="resource-link">Find Courses</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3>Study Groups</h3>
+                    <p>Join our community of certification candidates to share resources and study together.</p>
+                    <a href="#" class="resource-link">Join Study Group</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="images/logo.png" alt="zeroX Logo" class="footer-logo">
+                <p>zeroX is a collective of ethical hackers and cybersecurity advocates committed to defending the digital frontier.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> teat01@gmail.com</p>
+                <p><i class="fab fa-telegram"></i> @phazto</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 zeroX. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Ethical Guidelines</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
